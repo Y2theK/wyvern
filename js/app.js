@@ -1,13 +1,12 @@
 // data aos
-AOS.init();
+AOS.init({ once: true });
 
 // //swiperjs
 const swiper = new Swiper(".swiper", {
-  // Optional parameters
-  //   direction: "vertical",
   loop: true,
-
-  // If we need pagination
+  autoplay: {
+    delay: 3000,
+  },
   pagination: {
     el: ".swiper-pagination",
     type: "bullets",
@@ -22,17 +21,21 @@ const swiper = new Swiper(".swiper", {
 //navigation
 const navi = document.querySelector("nav");
 const pos = navi.offsetTop;
-const scrollup = document.querySelector(".scroll-up-item");
-console.log(pos);
+const scrollup = document.querySelector(".scroll-up");
 window.onscroll = () => {
   if (window.pageYOffset >= pos + 100) {
     navi.classList.add("sticky");
-    scrollup.style.display = "block";
+    scrollup.classList.add("scroll-up--visible");
   } else {
     navi.classList.remove("sticky");
-    scrollup.style.display = "none";
+    scrollup.classList.remove("scroll-up--visible");
   }
 };
+
+scrollup.querySelector("a").addEventListener("click", (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 //mobile nav
 var x = 0;
@@ -65,5 +68,8 @@ closeNav = () => {
 //preloader
 const loader = document.querySelector(".preloader");
 setTimeout(function () {
-  loader.style.display = "none";
-}, 2000);
+  loader.classList.add("preloader--hidden");
+  setTimeout(function () {
+    loader.style.display = "none";
+  }, 300);
+}, 1000);
