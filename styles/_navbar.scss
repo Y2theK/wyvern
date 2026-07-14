@@ -83,19 +83,19 @@
             padding: 0 1rem;
             margin: 30px 0;
             &:hover{
-                color: $lime;
+                color: $green;
                 transition: all .3s ease;
             }
-        
+
         }
         #button{
             padding:12px 24px;
             border: none;
             outline: none;
             border-radius: 4px;
-            background: $lime;
+            background: $greenDark;
             margin-left: 16px;
-            color: $light;
+            color: $white;
             &:hover{
                 background: $orangeRed;
                 transition: all .3s ease;

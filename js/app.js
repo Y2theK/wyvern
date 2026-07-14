@@ -96,4 +96,4 @@ setTimeout(function () {
   setTimeout(function () {
     loader.style.display = "none";
   }, 300);
-}, 1000);
+}, 500);
