@@ -5,14 +5,17 @@ AOS.init({ once: true });
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
 const lightboxCaption = document.getElementById("lightboxCaption");
+const lightboxDesc = document.getElementById("lightboxDesc");
 
 document.getElementById("gallery-grid").addEventListener("click", (e) => {
   const item = e.target.closest(".gallery__item");
   if (!item) return;
   const img = item.querySelector("img");
   const caption = item.getAttribute("data-caption");
+  const description = item.getAttribute("data-description");
   lightboxImg.src = img.src;
   lightboxCaption.textContent = caption || "";
+  lightboxDesc.textContent = description || "";
   lightboxImg.classList.remove("lightbox__img--zoomed");
   lightbox.classList.add("lightbox--active");
   document.body.style.overflow = "hidden";
@@ -22,7 +25,8 @@ function closeLightbox(e) {
   if (
     e.target === lightbox ||
     e.target.classList.contains("lightbox__close") ||
-    e.target.classList.contains("lightbox__caption")
+    e.target.classList.contains("lightbox__caption") ||
+    e.target.classList.contains("lightbox__desc")
   ) {
     lightbox.classList.remove("lightbox--active");
     document.body.style.overflow = "";
